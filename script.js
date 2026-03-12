@@ -7,7 +7,9 @@ let circle = document.querySelector(".big_arr_circle")
 let play = document.querySelector(".button__play-icon")
 let pause = document.querySelector(".button__pause-icon")
 let video = document.querySelector(".video_section video")
+
 let tl = gsap.timeline()
+
 
 function loader() {
 
@@ -58,7 +60,6 @@ function loader() {
     })
     tl.from(".texts h1", {
         y: 120,
-        // duration: 0.5,
         stagger: 0.1,
         ease: Power4
     })
@@ -71,13 +72,13 @@ function loader() {
         opacity: 0,
     })
 
-
 }
 
 function crsrmagnet() {
     document.addEventListener("mousemove", function (dets) {
         crsr.style.left = dets.x + "px"
         crsr.style.top = dets.y + "px"
+        crsr.style.transform = translate(`-${dets.x}%`, `-${dets.y}%`)
     });
 
     Shery.makeMagnet("nav h1,i");
@@ -101,16 +102,16 @@ function playbtn() {
 
     let swich = 1;
     vidsec.addEventListener("click", function () {
-        if(swich == 1){
-            play.style.display="none"
-            pause.style.display="inline"
+        if (swich == 1) {
+            play.style.display = "none"
+            pause.style.display = "inline"
             video.play();
-            swich=0;
-        }else{
-            play.style.display="inline"
-            pause.style.display="none"
+            swich = 0;
+        } else {
+            play.style.display = "inline"
+            pause.style.display = "none"
             video.pause();
-            swich=1;
+            swich = 1;
         }
     });
 
@@ -173,38 +174,36 @@ function circleanimation() {
     });
 }
 
-function line3animation(){
+function line3animation() {
     let line3 = document.querySelector(".h1line3")
     let line3img = document.querySelector("#horizontal_hover_rect")
-    
-    line3.addEventListener("mouseenter",function(){
-        line3.addEventListener("mousemove",function(dets){
-            line3img.style.display='block'
-            gsap.to("#horizontal_hover_rect",{
-                left:dets.x - 100,
-                top:dets.y - 50
+
+    line3.addEventListener("mouseenter", function () {
+        line3.addEventListener("mousemove", function (dets) {
+            line3img.style.display = 'block'
+            gsap.to("#horizontal_hover_rect", {
+                left: dets.x - 100,
+                top: dets.y - 50,
             })
         })
     })
-    line3.addEventListener("mouseleave",function(){
-            line3img.style.display='none'
-            line3img.style.top='50%'
-            line3img.style.left='20%'
-        })
+    line3.addEventListener("mouseleave", function () {
+        line3img.style.display = 'none'
+        line3img.style.top = '50%'
+        line3img.style.left = '20%'
+    })
 }
-
-
-line3animation()
-
 
 
 loader()
 
-// crsrmagnet()
+locomotive()
+
+crsrmagnet()
+
+line3animation()
 
 playbtn()
-
-locomotive()
 
 Sheryanimation()
 
