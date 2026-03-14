@@ -793,6 +793,7 @@ footer {
         font-weight: 500;
         color: transparent;
         font-family: silk serif;
+        transition: all 0.5s linear;
       }
     }
 
